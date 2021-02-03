@@ -24,7 +24,13 @@ To avoid overconsumption of (remote) resources, verify the following:
   - True: when it was successful (so there might be more work; let's poll again asap)
   - False: if an error occurred or there was no work to do
 
+## Error handling
 
+To keep in mind:
+
+- Each microflow will be executed in its own context/transaction
+- The module will end the transaction, if left open for some reason
+- Uncatched errors will be catched and will cause a 30 sec pause between executions
 
 ## Installation
 
