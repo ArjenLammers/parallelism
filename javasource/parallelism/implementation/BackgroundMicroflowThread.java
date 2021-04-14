@@ -26,7 +26,7 @@ public class BackgroundMicroflowThread extends Thread {
 			try {
 				context.startTransaction();
 				
-				Object result = Core.execute(context, microflow, new Object[0]);
+				Object result = Core.microflowCall(microflow).execute(context);
 				endTransaction(context);
 				
 				if (result instanceof Boolean && !(Boolean)result && sleepWhenFalse) {
