@@ -8,15 +8,15 @@ import com.mendix.core.Core;
 
 public class Constants
 {
-	// These are the constants for the CommunityCommons module
-
 	/**
-	* If this constant is set to 'true', old locks will be released automatically. Set this constant to 'false' if community commons locking is not used. Use true in all other cases. 
-	*/
-	public static boolean getenableReleaseLockEvent()
-	{
-		return (java.lang.Boolean)Core.getConfiguration().getConstantValue("CommunityCommons.enableReleaseLockEvent");
-	}
+	 * @deprecated
+	 * The default constructor of the Constants class should not be used.
+	 * Use the static get methods instead.
+	 */
+	@java.lang.Deprecated(since = "9.12", forRemoval = true)
+	public Constants() {}
+
+	// These are the constants for the CommunityCommons module
 
 	/**
 	* Restricted to 10 files at once for Mendix Cloud v4 compatibility. If you need to merge more than 10 files increase the number here. Setting the value to <=0 means unlimited.

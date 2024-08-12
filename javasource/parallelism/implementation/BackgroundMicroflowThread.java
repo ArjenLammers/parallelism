@@ -4,6 +4,7 @@ import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 
+
 public class BackgroundMicroflowThread extends Thread {
 	private String microflow, reference;
 	private Boolean repeat, sleepWhenFalse, isRunning;
@@ -21,8 +22,11 @@ public class BackgroundMicroflowThread extends Thread {
 	public void run() {
 		isRunning = true;
 		this.setName(this.getClass().getSimpleName() + " - " + microflow);
+		mainLoop:
 		do {
+			
 			IContext context = Core.createSystemContext();
+			
 			try {
 				context.startTransaction();
 				
@@ -39,7 +43,7 @@ public class BackgroundMicroflowThread extends Thread {
 			} finally {
 				endTransaction(context);
 			}
-			yield();
+			Thread.yield();
 		} while (repeat && isRunning);
 		isRunning = false;
 		Parallelism.removeThread(reference);

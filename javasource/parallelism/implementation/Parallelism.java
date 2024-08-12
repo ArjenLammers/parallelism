@@ -131,7 +131,7 @@ public class Parallelism {
 					removeThread(deadThread.getReference());
 					addThread(newThread);
 				}
-				yield();
+				Thread.yield();
 			}
 		}
 	}

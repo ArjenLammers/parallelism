@@ -37,7 +37,7 @@ public class GetMfAsyncResult extends CustomJavaAction<IMendixObject>
 	@java.lang.Override
 	public IMendixObject executeAction() throws Exception
 	{
-		this.future = __future == null ? null : parallelism.proxies.Future.initialize(getContext(), __future);
+		this.future = this.__future == null ? null : parallelism.proxies.Future.initialize(getContext(), __future);
 
 		// BEGIN USER CODE
 		Future<Object> future = Parallelism.getFutures(getContext()).get(this.future.getReference());
@@ -65,6 +65,7 @@ public class GetMfAsyncResult extends CustomJavaAction<IMendixObject>
 
 	/**
 	 * Returns a string representation of this action
+	 * @return a string representation of this action
 	 */
 	@java.lang.Override
 	public java.lang.String toString()

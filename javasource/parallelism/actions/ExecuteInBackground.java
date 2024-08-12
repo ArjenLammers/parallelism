@@ -11,10 +11,12 @@ package parallelism.actions;
 
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
+import com.mendix.systemwideinterfaces.core.IUser;
 import com.mendix.webui.CustomJavaAction;
 import parallelism.implementation.BackgroundMicroflowThread;
 import parallelism.implementation.Constants;
 import parallelism.implementation.Parallelism;
+import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class ExecuteInBackground extends CustomJavaAction<java.lang.Boolean>
 {
@@ -48,6 +50,7 @@ public class ExecuteInBackground extends CustomJavaAction<java.lang.Boolean>
 
 	/**
 	 * Returns a string representation of this action
+	 * @return a string representation of this action
 	 */
 	@java.lang.Override
 	public java.lang.String toString()

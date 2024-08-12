@@ -9,34 +9,34 @@
 
 package communitycommons.actions;
 
-import com.google.common.collect.Lists;
 import com.mendix.systemwideinterfaces.MendixRuntimeException;
-import org.apache.commons.lang3.StringUtils;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import communitycommons.proxies.SanitizerPolicy;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.StringUtils;
 
 /**
- * Removes all potiential dangerous HTML from a string so that it can be safely displayed in a browser. 
+ * Removes all potential dangerous HTML from a string so that it can be safely displayed in a browser. 
  * 
  * This function should be applied to all HTML which is displayed in the browser, and can be entered by (untrusted) users.
  * 
  * - HTML: The html to sanitize
- *  - policy1... policy6: one or more values of SanitizerPolicy. You may leave these poliy parameters explicitly empty if you don't want to allow additional elements. (I.e. provide 'empty' without the quotes as parameter value)
- *   
- *  BLOCKS: Allows common block elements including <p>, <h1>, etc.
- *  FORMATTING: Allows common formatting elements including <b>, <i>, etc.
- *  IMAGES: Allows <img> elements from HTTP, HTTPS, and relative sources.
- *  LINKS: Allows HTTP, HTTPS, MAILTO and relative links
- *  STYLES: Allows certain safe CSS properties in style="..." attributes.
- *  TABLES: Allows commons table elements.
- *   
- *  For more information, visit:
- *   
- *  http://javadoc.io/doc/com.googlecode.owasp-java-html-sanitizer/owasp-java-html-sanitizer/20180219.1
+ * - policy1... policy6: one or more values of SanitizerPolicy. You may leave these policy parameters empty if you don't want to allow additional elements.
+ * 
+ * BLOCKS: Allows common block elements including <p>, <h1>, etc.
+ * FORMATTING: Allows common formatting elements including <b>, <i>, etc.
+ * IMAGES: Allows <img> elements from HTTP, HTTPS, and relative sources.
+ * LINKS: Allows HTTP, HTTPS, MAILTO and relative links
+ * STYLES: Allows certain safe CSS properties in style="..." attributes.
+ * TABLES: Allows commons table elements.
+ * 
+ * For more information, visit:
+ * 
+ * http://javadoc.io/doc/com.googlecode.owasp-java-html-sanitizer/owasp-java-html-sanitizer/20180219.1
  */
 public class XSSSanitize extends CustomJavaAction<java.lang.String>
 {
@@ -68,8 +68,7 @@ public class XSSSanitize extends CustomJavaAction<java.lang.String>
 			return "";
 		}
 
-		List<SanitizerPolicy> policyParams = Lists.newArrayList(policy1, policy2, policy3, policy4, policy5, policy6)
-			.stream()
+		List<SanitizerPolicy> policyParams = Stream.of(policy1, policy2, policy3, policy4, policy5, policy6)
 			.filter(Objects::nonNull)
 			.collect(Collectors.toList());
 
@@ -83,6 +82,7 @@ public class XSSSanitize extends CustomJavaAction<java.lang.String>
 
 	/**
 	 * Returns a string representation of this action
+	 * @return a string representation of this action
 	 */
 	@java.lang.Override
 	public java.lang.String toString()
