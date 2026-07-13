@@ -18,27 +18,34 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import parallelism.implementation.Parallelism;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class GetMfAsyncResult extends CustomJavaAction<IMendixObject>
+public class GetMfAsyncResult extends UserAction<IMendixObject>
 {
-	private IMendixObject __future;
-	private parallelism.proxies.Future future;
-	private java.lang.Long timeout;
-	private java.lang.String resultEntity;
+	/** @deprecated use future.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __future;
+	private final parallelism.proxies.Future future;
+	private final java.lang.Long timeout;
+	private final java.lang.String resultEntity;
 
-	public GetMfAsyncResult(IContext context, IMendixObject future, java.lang.Long timeout, java.lang.String resultEntity)
+	public GetMfAsyncResult(
+		IContext context,
+		IMendixObject _future,
+		java.lang.Long _timeout,
+		java.lang.String _resultEntity
+	)
 	{
 		super(context);
-		this.__future = future;
-		this.timeout = timeout;
-		this.resultEntity = resultEntity;
+		this.__future = _future;
+		this.future = _future == null ? null : parallelism.proxies.Future.initialize(getContext(), _future);
+		this.timeout = _timeout;
+		this.resultEntity = _resultEntity;
 	}
 
 	@java.lang.Override
 	public IMendixObject executeAction() throws Exception
 	{
-		this.future = this.__future == null ? null : parallelism.proxies.Future.initialize(getContext(), __future);
-
 		// BEGIN USER CODE
 		Future<Object> future = Parallelism.getFutures(getContext()).get(this.future.getReference());
 		

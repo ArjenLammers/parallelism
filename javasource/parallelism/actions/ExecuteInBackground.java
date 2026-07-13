@@ -17,23 +17,31 @@ import parallelism.implementation.BackgroundMicroflowThread;
 import parallelism.implementation.Constants;
 import parallelism.implementation.Parallelism;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class ExecuteInBackground extends CustomJavaAction<java.lang.Boolean>
+public class ExecuteInBackground extends UserAction<java.lang.Boolean>
 {
-	private java.lang.Long amountOfThreads;
-	private java.lang.String microflow;
-	private java.lang.Boolean repeat;
-	private java.lang.Long sleep;
-	private java.lang.Boolean sleepWhenFalse;
+	private final java.lang.Long amountOfThreads;
+	private final java.lang.String microflow;
+	private final java.lang.Boolean repeat;
+	private final java.lang.Long sleep;
+	private final java.lang.Boolean sleepWhenFalse;
 
-	public ExecuteInBackground(IContext context, java.lang.Long amountOfThreads, java.lang.String microflow, java.lang.Boolean repeat, java.lang.Long sleep, java.lang.Boolean sleepWhenFalse)
+	public ExecuteInBackground(
+		IContext context,
+		java.lang.Long _amountOfThreads,
+		java.lang.String _microflow,
+		java.lang.Boolean _repeat,
+		java.lang.Long _sleep,
+		java.lang.Boolean _sleepWhenFalse
+	)
 	{
 		super(context);
-		this.amountOfThreads = amountOfThreads;
-		this.microflow = microflow;
-		this.repeat = repeat;
-		this.sleep = sleep;
-		this.sleepWhenFalse = sleepWhenFalse;
+		this.amountOfThreads = _amountOfThreads;
+		this.microflow = _microflow;
+		this.repeat = _repeat;
+		this.sleep = _sleep;
+		this.sleepWhenFalse = _sleepWhenFalse;
 	}
 
 	@java.lang.Override

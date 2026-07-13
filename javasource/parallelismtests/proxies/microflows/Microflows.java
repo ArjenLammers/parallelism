@@ -4,84 +4,153 @@
 
 package parallelismtests.proxies.microflows;
 
-import java.util.HashMap;
-import java.util.Map;
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 
-public class Microflows
+public final class Microflows
 {
 	/**
-	 * @deprecated
-	 * The default constructor of the Microflows class should not be used.
-	 * Use the static microflow invocation methods instead.
+	 * Private constructor to prevent instantiation of this class. 
 	 */
-	@java.lang.Deprecated(since = "9.12", forRemoval = true)
-	public Microflows() {}
+	private Microflows() {}
 
 	// These are the microflows for the ParallelismTests module
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder iVK_StartBlockingThreadsIssueBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.IVK_StartBlockingThreadsIssue");
+		return builder;
+	}
+
 	public static void iVK_StartBlockingThreadsIssue(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("ParallelismTests.IVK_StartBlockingThreadsIssue").withParams(params).execute(context);
+		iVK_StartBlockingThreadsIssueBuilder().execute(context);
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder iVK_StopThreadsBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.IVK_StopThreads");
+		return builder;
+	}
+
 	public static void iVK_StopThreads(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("ParallelismTests.IVK_StopThreads").withParams(params).execute(context);
+		iVK_StopThreadsBuilder().execute(context);
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder iVK_TestAsyncPatternBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.IVK_TestAsyncPattern");
+		return builder;
+	}
+
 	public static void iVK_TestAsyncPattern(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("ParallelismTests.IVK_TestAsyncPattern").withParams(params).execute(context);
+		iVK_TestAsyncPatternBuilder().execute(context);
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder iVK_TestBackgroundLongBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.IVK_TestBackgroundLong");
+		return builder;
+	}
+
 	public static void iVK_TestBackgroundLong(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("ParallelismTests.IVK_TestBackgroundLong").withParams(params).execute(context);
+		iVK_TestBackgroundLongBuilder().execute(context);
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder iVK_TestBackgroundShortBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.IVK_TestBackgroundShort");
+		return builder;
+	}
+
 	public static void iVK_TestBackgroundShort(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("ParallelismTests.IVK_TestBackgroundShort").withParams(params).execute(context);
+		iVK_TestBackgroundShortBuilder().execute(context);
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder parallel_BlockingIssueBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.Parallel_BlockingIssue");
+		return builder;
+	}
+
 	public static boolean parallel_BlockingIssue(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		return (java.lang.Boolean) Core.microflowCall("ParallelismTests.Parallel_BlockingIssue").withParams(params).execute(context);
+		Object result = parallel_BlockingIssueBuilder().execute(context);
+		return (boolean) result;
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder parallel_SendMessageBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.Parallel_SendMessage");
+		return builder;
+	}
+
 	public static parallelismtests.proxies.ExampleResult parallel_SendMessage(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		IMendixObject result = (IMendixObject)Core.microflowCall("ParallelismTests.Parallel_SendMessage").withParams(params).execute(context);
-		return result == null ? null : parallelismtests.proxies.ExampleResult.initialize(context, result);
+		Object result = parallel_SendMessageBuilder().execute(context);
+		return result == null ? null : parallelismtests.proxies.ExampleResult.initialize(context, (IMendixObject) result);
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder parallel_WaitingLongBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.Parallel_WaitingLong");
+		return builder;
+	}
+
 	public static boolean parallel_WaitingLong(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		return (java.lang.Boolean) Core.microflowCall("ParallelismTests.Parallel_WaitingLong").withParams(params).execute(context);
+		Object result = parallel_WaitingLongBuilder().execute(context);
+		return (boolean) result;
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder parallel_WaitingShortBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.Parallel_WaitingShort");
+		return builder;
+	}
+
 	public static boolean parallel_WaitingShort(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		return (java.lang.Boolean) Core.microflowCall("ParallelismTests.Parallel_WaitingShort").withParams(params).execute(context);
+		Object result = parallel_WaitingShortBuilder().execute(context);
+		return (boolean) result;
 	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder sub_ProcessBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.Sub_Process");
+		return builder;
+	}
+
 	public static void sub_Process(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("ParallelismTests.Sub_Process").withParams(params).execute(context);
+		sub_ProcessBuilder().execute(context);
 	}
-	public static void sub_SetError(IContext context, parallelismtests.proxies.TestOrder _testOrder, java.lang.String _errorMessage)
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder sub_SetErrorBuilder(
+		parallelismtests.proxies.TestOrder _testOrder,
+		java.lang.String _errorMessage
+	)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("TestOrder", _testOrder == null ? null : _testOrder.getMendixObject());
-		params.put("ErrorMessage", _errorMessage);
-		Core.microflowCall("ParallelismTests.Sub_SetError").withParams(params).execute(context);
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.Sub_SetError");
+		builder = builder.withParam("TestOrder", _testOrder);
+		builder = builder.withParam("ErrorMessage", _errorMessage);
+		return builder;
 	}
+
+	public static void sub_SetError(
+		IContext context,
+		parallelismtests.proxies.TestOrder _testOrder,
+		java.lang.String _errorMessage
+	)
+	{
+		sub_SetErrorBuilder(
+				_testOrder,
+				_errorMessage
+			)
+			.execute(context);
+	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder sub_ThrowErrorBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("ParallelismTests.Sub_ThrowError");
+		return builder;
+	}
+
 	public static void sub_ThrowError(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("ParallelismTests.Sub_ThrowError").withParams(params).execute(context);
+		sub_ThrowErrorBuilder().execute(context);
 	}
 }

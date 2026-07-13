@@ -4,25 +4,25 @@
 
 package parallelism.proxies.microflows;
 
-import java.util.HashMap;
-import java.util.Map;
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
 
-public class Microflows
+public final class Microflows
 {
 	/**
-	 * @deprecated
-	 * The default constructor of the Microflows class should not be used.
-	 * Use the static microflow invocation methods instead.
+	 * Private constructor to prevent instantiation of this class. 
 	 */
-	@java.lang.Deprecated(since = "9.12", forRemoval = true)
-	public Microflows() {}
+	private Microflows() {}
 
 	// These are the microflows for the Parallelism module
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder beforeShutdownBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("Parallelism.BeforeShutdown");
+		return builder;
+	}
+
 	public static void beforeShutdown(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("Parallelism.BeforeShutdown").withParams(params).execute(context);
+		beforeShutdownBuilder().execute(context);
 	}
 }

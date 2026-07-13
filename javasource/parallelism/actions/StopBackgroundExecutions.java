@@ -12,15 +12,19 @@ package parallelism.actions;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import parallelism.implementation.Parallelism;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class StopBackgroundExecutions extends CustomJavaAction<java.lang.Boolean>
+public class StopBackgroundExecutions extends UserAction<java.lang.Boolean>
 {
-	private java.lang.Long gracefulShutdownDelay;
+	private final java.lang.Long gracefulShutdownDelay;
 
-	public StopBackgroundExecutions(IContext context, java.lang.Long gracefulShutdownDelay)
+	public StopBackgroundExecutions(
+		IContext context,
+		java.lang.Long _gracefulShutdownDelay
+	)
 	{
 		super(context);
-		this.gracefulShutdownDelay = gracefulShutdownDelay;
+		this.gracefulShutdownDelay = _gracefulShutdownDelay;
 	}
 
 	@java.lang.Override

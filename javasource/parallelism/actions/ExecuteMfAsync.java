@@ -16,22 +16,27 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import parallelism.implementation.Parallelism;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * This will start a microflow in background, having a Future reference.
  * It will NOT start a transaction, and is specifically suitable to execute tasks which don't involve any database interaction.
  * 
  */
-public class ExecuteMfAsync extends CustomJavaAction<IMendixObject>
+public class ExecuteMfAsync extends UserAction<IMendixObject>
 {
-	private java.lang.String microflow;
-	private IMendixObject argument;
+	private final java.lang.String microflow;
+	private final IMendixObject argument;
 
-	public ExecuteMfAsync(IContext context, java.lang.String microflow, IMendixObject argument)
+	public ExecuteMfAsync(
+		IContext context,
+		java.lang.String _microflow,
+		IMendixObject _argument
+	)
 	{
 		super(context);
-		this.microflow = microflow;
-		this.argument = argument;
+		this.microflow = _microflow;
+		this.argument = _argument;
 	}
 
 	@java.lang.Override
